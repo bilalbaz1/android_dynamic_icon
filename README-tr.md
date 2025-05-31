@@ -1,13 +1,10 @@
-### Languages: &nbsp; [Türkçe](https://github.com/bilalbaz1/android_dynamic_icon/blob/main/README-tr.md) &nbsp; &nbsp;
-&nbsp;
+# 📱 Flutter ile Dinamik Uygulama İkonu Kullanımı (android_dynamic_icon)
 
-# 📱 Using Dynamic Application Icon with Flutter (android_dynamic_icon)
+Bu doküman, Flutter projesine android_dynamic_icon eklentisinin manuel olarak nasıl entegre edileceğini ve Android uygulama ikonunun nasıl dinamik olarak değiştirileceğini adım adım açıklar.
 
-This document explains step by step how to manually integrate the android_dynamic_icon plugin into a Flutter project and how to dynamically change the Android application icon.
+## 🔧 1. Eklentiyi Projeye Ekle
 
-## 🔧 1. Add the Plugin to the Project
-
-Open your pubspec.yaml file and add the following line to the dependencies section:
+pubspec.yaml dosyanı aç ve dependencies kısmına aşağıdaki satırı ekle:
 
 ```dependencies:
   android_dynamic_icon:
@@ -16,21 +13,21 @@ Open your pubspec.yaml file and add the following line to the dependencies secti
       ref: 37810be
 ```
 
-Run in the terminal:
+Terminalde çalıştır:
 
 ```flutter pub get```
 
-## 🖼 2. Add the icons to the drawable folder
+## 🖼 2. İkonları drawable klasörüne ekle
 
-Place all icon files (for example: iconone.png, icontwo.png) in the following folder:
+Tüm ikon dosyalarını (örneğin: iconone.png, icontwo.png) şu klasöre yerleştir:
 
 `android/app/src/main/res/drawable`
 
-The icons must be in .png format.
+İkonlar .png formatında olmalı.
 
-## 📝 3. Update the AndroidManifest.xml
+## 📝 3. AndroidManifest.xml Güncellemesi
 
-`android/app/src/main/AndroidManifest.xml` file open and update the <application> block as follows::
+`android/app/src/main/AndroidManifest.xml` dosyasını aç ve <application> bloğunu aşağıdaki şekilde güncelle:
 
 ```
 <application
@@ -58,7 +55,7 @@ The icons must be in .png format.
         </intent-filter>
     </activity>
 
-    <!-- activity-alias start -->
+    <!-- Alternatif ikonlar için activity-alias tanımları -->
     <activity-alias
         android:label="app"
         android:icon="@drawable/iconone"
@@ -84,21 +81,18 @@ The icons must be in .png format.
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity-alias>
-    <!-- activity-alias end -->
-    
 </application>
 ````
 
-## 🧾 4. `IconOne.kt` and `IconTwo.kt` create file.
+## 🧾 4. `IconOne.kt` ve `IconTwo.kt` Dosyalarını Oluştur
 
-Go to the `android/app/src/main/kotlin/com/example/appname/` folder. (The folder structure may vary according to your package name.)
+`android/app/src/main/kotlin/com/example/uygulamaadi/` klasörüne git. (Kendi package adına göre klasör yapısı değişebilir.)
 
-Create the following two files:
-
+Aşağıdaki iki dosyayı oluştur:
 `IconOne.kt`
 
 ````
-package com.example.appname
+package com.example.uygulamaadi
 
 import io.flutter.embedding.android.FlutterActivity
 
@@ -109,7 +103,7 @@ class IconOne : FlutterActivity() {
 `IconTwo.kt`
 
 ```
-package com.example.appname
+package com.example.uygulamaadi
 
 import io.flutter.embedding.android.FlutterActivity
 
@@ -117,15 +111,15 @@ class IconTwo : FlutterActivity() {
 }
 ```
 
-‼️ ‼️ ‼️ ‼️ Replace the package name with your project's package name. ‼️ ‼️ ‼️
+‼️ ‼️ ‼️ ‼️ package adını kendi projenin package adı ile değiştir. ‼️ ‼️ ‼️
 
 
 #
 #
 
-## ✅ 5. Usage on the Flutter Side
+## ✅ 5. Flutter Tarafında Kullanım
 
-Flutter code to change the icon:
+İkonu değiştirmek için Flutter kodu:
 
 ```
 import 'package:android_dynamic_icon/android_dynamic_icon.dart';
@@ -145,19 +139,19 @@ void changeFunc() async {
 }
 ````
 
-To revert to the default icon:
+Varsayılan ikona geri dönmek için:
 
 ```
 await AndroidDynamicIcon.changeIcon(classNames: ['MainActivity', '']);
 ````
 
-🔁 End
+🔁 Son
 
-Your application can now display different icons based on the user or specific events. For example, you can use special icons during campaigns, New Year's, or birthdays.
+Artık uygulaman, kullanıcıya veya belirli olaylara göre farklı ikonlar gösterebilir. Örneğin kampanyalarda, yılbaşında veya doğum günlerinde özel ikon kullanabilirsin.
 
 #
 #
-# Example Code:
+# Örnek Kod:
 ```
 import 'package:android_dynamic_icon/android_dynamic_icon.dart';
 import 'package:flutter/material.dart';
