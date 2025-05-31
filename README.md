@@ -4,7 +4,26 @@ A flutter plugin for dynamically changing multiple android app icons for your ap
 
 ## Usage
 
-To use this plugin, add `android_dynamic_icon` as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
+To use this plugin, add 
+```
+...
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  android_dynamic_icon:
+    git:
+      url: https://github.com/bilalbaz1/android_dynamic_icon.git
+      ref: 37810be
+
+...
+
+```  
+as a [dependency in your pubspec.yaml file](https://flutter.io/platform-plugins/).
+
+
+## ‼️ ‼️ `ref: XXXXX` last ref. ❗️❗️❗️
 
 ## Getting Started
 
