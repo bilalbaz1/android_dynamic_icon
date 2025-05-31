@@ -1,0 +1,26 @@
+plugins {
+    id 'com.android.library'
+}
+
+group 'com.example.android_dynamic_icon'
+version '1.0-SNAPSHOT'
+
+
+android {
+    namespace "com.example.android_dynamic_icon"
+    compileSdkVersion 34
+
+    lintOptions {
+        disable 'InvalidPackage'
+        disable 'GradleDependency'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        minSdkVersion 16
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+}
